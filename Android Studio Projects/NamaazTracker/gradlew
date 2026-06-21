@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# Gradle start up script for UN*X
+#
+
+# Resolve links: $0 may be a link
+PRG="$0"
+while [ -h "$PRG" ] ; do
+    ls=$(ls -ld "$PRG")
+    link=$(expr "$ls" : '.*-> \(.*\)$')
+    if expr "$link" : '/.*' > /dev/null; then
+        PRG="$link"
+    else
+        PRG=$(dirname "$PRG")"/$link"
+    fi
+done
+SAVED="$(pwd)"
+cd "$(dirname "$PRG")/" >/dev/null
+APP_HOME="$(pwd -P)"
+cd "$SAVED" >/dev/null
+
+APP_NAME="Gradle"
+APP_BASE_NAME=$(basename "$0")
+
+CLASSPATH="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+
+# Find Java
+if [ -n "$JAVA_HOME" ] ; then
+    JAVACMD="$JAVA_HOME/bin/java"
+else
+    JAVACMD="java"
+fi
+
+# Use Android Studio JDK if system Java is too old
+JAVA_VER=$("$JAVACMD" -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d. -f1)
+if [ "$JAVA_VER" = "1" ] || [ -z "$JAVA_VER" ] || [ "$JAVA_VER" -lt 17 ] 2>/dev/null; then
+    STUDIO_JDK="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+    if [ -x "$STUDIO_JDK/bin/java" ]; then
+        JAVACMD="$STUDIO_JDK/bin/java"
+    fi
+fi
+
+exec "$JAVACMD" \
+    -classpath "$CLASSPATH" \
+    org.gradle.wrapper.GradleWrapperMain \
+    "$@"

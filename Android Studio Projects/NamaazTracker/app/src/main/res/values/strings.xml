@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Namaaz Tracker</string>
+    <string name="select_namaaz">Select Namaaz</string>
+    <string name="rakat_label">%d Rakat</string>
+    <string name="rakah_progress">Rakah %1$d of %2$d</string>
+    <string name="alhamdulillah">Alhamdulillah</string>
+    <string name="prayer_complete">Prayer Complete</string>
+    <string name="return_home">Return Home</string>
+    <string name="camera_permission_rationale">Camera access is required to track your prayer postures.</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="current_posture">Current posture</string>
+    <string name="connecting">Connecting to posture service…</string>
+    <string name="error_no_api">Could not reach posture service. Ensure the server is running.</string>
+</resources>
