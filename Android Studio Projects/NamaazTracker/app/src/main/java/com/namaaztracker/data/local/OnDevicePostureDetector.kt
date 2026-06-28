@@ -9,7 +9,7 @@ import com.google.mediapipe.framework.image.BitmapImageBuilder
 import com.google.mediapipe.tasks.core.BaseOptions
 import com.google.mediapipe.tasks.vision.core.RunningMode
 import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker
-import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarkerOptions
+import com.google.mediapipe.tasks.vision.poselandmarker.PoseLandmarker.PoseLandmarkerOptions
 import com.namaaztracker.domain.model.Posture
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.nio.FloatBuffer
@@ -62,10 +62,10 @@ class OnDevicePostureDetector @Inject constructor(
             // ── 1. Pose landmark extraction ────────────────────────────────
             val mpImage = BitmapImageBuilder(bitmap).build()
             val result  = landmarker.detect(mpImage)
-            if (result.poseLandmarks().isEmpty()) return Posture.UNKNOWN
+            if (result.landmarks().isEmpty()) return Posture.UNKNOWN
 
             // ── 2. Build 132-feature vector (x,y,z,visibility × 33 landmarks)
-            val landmarks = result.poseLandmarks()[0]
+            val landmarks = result.landmarks()[0]
             val features  = FloatArray(132)
             for (i in landmarks.indices) {
                 val lm = landmarks[i]
