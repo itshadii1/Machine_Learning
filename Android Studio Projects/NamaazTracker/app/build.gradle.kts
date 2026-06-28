@@ -55,7 +55,10 @@ android {
 
     composeOptions { kotlinCompilerExtensionVersion = "1.5.8" }
 
-    packaging { resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" } }
+    packaging {
+        resources { excludes += "/META-INF/{AL2.0,LGPL2.1}" }
+        jniLibs { pickFirst("lib/arm64-v8a/libc++_shared.so") }
+    }
 }
 
 kapt { correctErrorTypes = true }
@@ -91,6 +94,10 @@ dependencies {
     implementation(libs.camera.camera2)
     implementation(libs.camera.lifecycle)
     implementation(libs.camera.view)
+
+    // On-device inference
+    implementation(libs.mediapipe.tasks.vision)
+    implementation(libs.onnxruntime.android)
 
     // Networking
     implementation(libs.retrofit)

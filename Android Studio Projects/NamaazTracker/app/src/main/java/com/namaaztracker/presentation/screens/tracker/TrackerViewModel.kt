@@ -45,7 +45,7 @@ class TrackerViewModel @Inject constructor(
 
     // Require N consecutive detections of the same posture before triggering a transition.
     // At 4 fps this means ~750 ms of stable hold — robust against single-frame flickers.
-    private val STABLE_FRAME_COUNT = 3
+    private val STABLE_FRAME_COUNT = 2
 
     init {
         viewModelScope.launch {

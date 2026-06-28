@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import java.io.ByteArrayOutputStream
 
 object ImageUtils {
-    fun bitmapToJpeg(bitmap: Bitmap, quality: Int = 75): ByteArray =
+    fun bitmapToJpeg(bitmap: Bitmap, quality: Int = 40): ByteArray =
         ByteArrayOutputStream().also { out ->
             bitmap.compress(Bitmap.CompressFormat.JPEG, quality, out)
         }.toByteArray()
